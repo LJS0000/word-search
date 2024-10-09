@@ -1,0 +1,4 @@
+.layout {
+  @apply w-screen h-screen overflow-hidden;
+  @apply grid grid-rows-[auto_minmax(0,1fr)];
+}

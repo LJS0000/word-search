@@ -1,0 +1,4 @@
+.board {
+  @apply border-2 border-teal-600;
+  @apply grid grid-cols-12 gap-2;
+}
