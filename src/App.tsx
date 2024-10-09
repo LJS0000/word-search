@@ -1,9 +1,13 @@
 import Router from './router/Router';
+import Layout from './components/Layout';
+import './styles/globals.css';
 
 function App() {
   return (
     <div className='App'>
-      <Router />
+      <Layout>
+        <Router />
+      </Layout>
     </div>
   );
 }
