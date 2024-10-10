@@ -1,4 +1,15 @@
 .board {
-  @apply border-2 border-teal-600;
-  @apply grid grid-cols-12 gap-2;
+  @apply min-w-[50%] max-w-[90%] h-[50%] aspect-[8/9];
+  @apply border-4 border-teal-600;
+  @apply flex flex-col border-collapse;
+}
+
+.row {
+  @apply flex flex-1;
+}
+
+.cell {
+  @apply flex-1;
+  @apply border border-teal-600;
+  @apply -m-px; /* 테두리 겹치도록 마진 제거 */
 }
