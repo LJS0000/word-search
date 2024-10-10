@@ -1,5 +1,5 @@
 .home {
-  @apply w-screen h-screen;
+  @apply w-full h-full;
   @apply flex justify-center items-center;
 }
 
@@ -15,4 +15,5 @@
 
 .mainContainer {
   @apply w-1/2 h-full shadow-lg;
+  @apply flex justify-center items-center;
 }
