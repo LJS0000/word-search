@@ -1,0 +1,19 @@
+.home {
+  @apply w-full h-full;
+  @apply flex justify-center items-center;
+}
+
+.sidebar {
+  @apply w-1/4 h-full bg-gray-50;
+}
+
+.leftSide {
+}
+
+.rightSide {
+}
+
+.mainContainer {
+  @apply w-1/2 h-full shadow-lg;
+  @apply flex justify-center items-center;
+}
