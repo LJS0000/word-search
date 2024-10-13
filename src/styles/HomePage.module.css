@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-  @apply w-1/4 h-full bg-gray-50;
+  @apply w-1/5 h-full bg-gray-50;
 }
 
 .leftSide {
