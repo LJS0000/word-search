@@ -1,0 +1,29 @@
+.formContainer {
+  @apply w-full h-full p-8;
+  @apply overflow-y-scroll md:overflow-hidden;
+}
+
+.title {
+  @apply text-2xl font-bold text-teal-800;
+  @apply mb-4;
+}
+
+.form {
+  @apply w-full;
+  @apply flex flex-col gap-4;
+}
+
+.inputWrapper {
+  @apply flex flex-col;
+}
+
+.textarea {
+  @apply w-full px-4 py-2;
+  @apply border border-teal-600 rounded;
+  @apply outline-none;
+  @apply resize-none;
+}
+
+.wordList {
+  @apply grid grid-cols-2 md:grid-cols-3;
+}

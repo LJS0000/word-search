@@ -1,0 +1,8 @@
+.button {
+  @apply w-full px-4 py-2;
+  @apply border border-teal-600 rounded;
+  @apply outline-none;
+  @apply text-white bg-teal-800;
+  @apply cursor-pointer;
+  @apply hover:bg-teal-700;
+}

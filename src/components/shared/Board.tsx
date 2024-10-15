@@ -1,4 +1,4 @@
-import styles from '../../styles/Board.module.css';
+import styles from '../../styles/shared/Board.module.css';
 
 const Board = ({ rows = 12, cols = 14 }: { rows?: number; cols?: number }) => {
   return (

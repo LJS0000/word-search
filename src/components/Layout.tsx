@@ -5,7 +5,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.layout}>
       <Header />
-      {children}
+      <div className={styles.contents}>
+        <aside className={`${styles.sidebar} ${styles.leftSide}`}>left</aside>
+        <main className={styles.main}>{children}</main>
+        <aside className={`${styles.sidebar} ${styles.rightSide}`}>right</aside>
+      </div>
     </div>
   );
 };
