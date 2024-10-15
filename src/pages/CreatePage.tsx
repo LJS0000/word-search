@@ -1,5 +1,6 @@
 import styles from '../styles/CreatePage.module.css';
 import Input from '../components/shared/Input';
+import Button from '../components/shared/SubmitButton';
 
 const CreatePage = () => {
   return (
@@ -22,7 +23,7 @@ const CreatePage = () => {
             ))}
           </div>
         </div>
-        <button type='submit'>Submit</button>
+        <Button>Create</Button>
       </form>
     </div>
   );

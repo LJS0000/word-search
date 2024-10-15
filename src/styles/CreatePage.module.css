@@ -21,6 +21,7 @@
   @apply w-full px-4 py-2;
   @apply border border-teal-600 rounded;
   @apply outline-none;
+  @apply resize-none;
 }
 
 .wordList {
