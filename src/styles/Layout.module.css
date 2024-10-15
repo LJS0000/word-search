@@ -21,5 +21,4 @@
 
 .main {
   @apply w-full h-full shadow-lg md:w-1/2;
-  @apply flex items-center justify-center;
 }
