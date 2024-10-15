@@ -1,4 +1,4 @@
-import styles from '../styles/Create.module.css';
+import styles from '../styles/CreatePage.module.css';
 
 const CreatePage = () => {
   return (
