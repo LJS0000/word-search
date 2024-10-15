@@ -1,6 +1,6 @@
 .formContainer {
   @apply w-full h-full p-8;
-  @apply overflow-y-scroll;
+  @apply overflow-y-scroll md:overflow-hidden;
 }
 
 .title {
