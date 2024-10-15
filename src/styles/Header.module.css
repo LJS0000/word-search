@@ -1,13 +1,13 @@
 .header {
-  @apply py-8 px-8;
-  @apply bg-teal-800 text-white;
-  @apply flex justify-end;
+  @apply px-8 py-8;
+  @apply text-white bg-teal-800;
+  @apply flex justify-between md:justify-end;
   @apply relative;
 }
 
 .title {
   @apply text-2xl font-bold leading-none;
-  @apply absolute left-1/2 -translate-x-1/2;
+  @apply md:-translate-x-1/2 md:absolute md:left-1/2;
   @apply cursor-pointer;
 }
 

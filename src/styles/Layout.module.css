@@ -2,3 +2,24 @@
   @apply w-screen h-screen overflow-hidden;
   @apply grid grid-rows-[auto_minmax(0,1fr)];
 }
+
+.contents {
+  @apply w-full h-full;
+  @apply flex items-center justify-center;
+  @apply flex-col md:flex-row;
+}
+
+.sidebar {
+  @apply w-full h-full md:w-1/4 bg-gray-50;
+}
+
+.leftSide {
+}
+
+.rightSide {
+}
+
+.main {
+  @apply w-full h-full shadow-lg md:w-1/2;
+  @apply flex items-center justify-center;
+}
