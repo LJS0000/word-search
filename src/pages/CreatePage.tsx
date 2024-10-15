@@ -6,13 +6,21 @@ const CreatePage = () => {
     <div className={styles.formContainer}>
       <h2 className={styles.title}>Create new game !</h2>
       <form className={styles.form}>
-        <label htmlFor='title'>Title</label>
-        <Input type='text' id='title' />
-        <label htmlFor='desc'>Description</label>
-        <textarea name='desc' id='desc' />
-        <label htmlFor='wordList'>Word List</label>
-        <div>
-          <Input type='text' id='wordList' />
+        <div className={styles.inputWrapper}>
+          <label htmlFor='title'>Title</label>
+          <Input type='text' id='title' />
+        </div>
+        <div className={styles.inputWrapper}>
+          <label htmlFor='desc'>Description</label>
+          <textarea className={styles.textarea} id='desc' />
+        </div>
+        <div className={styles.inputWrapper}>
+          <label htmlFor='wordList'>Word List</label>
+          <div className={styles.wordList}>
+            {[...Array(30)].map((_, index) => (
+              <Input key={index} type='text' id={`word-${index}`} />
+            ))}
+          </div>
         </div>
         <button type='submit'>Submit</button>
       </form>
