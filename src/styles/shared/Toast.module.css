@@ -1,0 +1,30 @@
+.alert {
+  @apply fixed -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2;
+  @apply bg-white rounded shadow;
+}
+
+.alert > p {
+  @apply p-8 text-lg;
+}
+
+.alert > button {
+  @apply w-full p-4 rounded-b;
+}
+
+.success > p {
+  @apply text-teal-800;
+}
+
+.error > p {
+  @apply text-red-800;
+}
+
+.success > button {
+  @apply text-white bg-teal-800;
+  @apply hover:bg-teal-400;
+}
+
+.error > button {
+  @apply text-white bg-red-800;
+  @apply hover:bg-red-400;
+}

@@ -35,9 +35,9 @@ export const addDocumentToCollection = async (
 ): Promise<void> => {
   try {
     await addDoc(collection(db, collectionName), data);
-    console.log('문서가 성공적으로 작성되었습니다!');
-  } catch (error) {
-    console.error('문서 작성 중 오류가 발생했습니다:', error);
+    console.log('Successfully added document');
+  } catch (err) {
+    console.error('Error adding document', err);
   }
 };
 
