@@ -7,7 +7,6 @@ interface AlertProps {
 }
 
 const Alert = ({ text, type, onClose }: AlertProps) => {
-  console.log(onClose);
   return (
     <div className={`${styles.alert} ${styles[type]}`}>
       <p>{text}</p>
