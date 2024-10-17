@@ -59,6 +59,7 @@ const CreatePage = () => {
       setWordListError(null);
     }
 
+    console.log('Form is valid:', isValid);
     return isValid;
   };
 
@@ -99,7 +100,14 @@ const CreatePage = () => {
         show: true,
         text: 'Error occurred creating new game',
         type: 'error',
-        onClose: undefined,
+        onClose: () => {
+          setAlert({
+            show: false,
+            text: '',
+            type: 'success',
+            onClose: undefined,
+          });
+        },
       });
     }
   };
