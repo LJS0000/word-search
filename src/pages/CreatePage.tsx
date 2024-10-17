@@ -52,8 +52,8 @@ const CreatePage = () => {
       setDescError(null);
     }
 
-    if (wordList.length === 0) {
-      setWordListError('At least one word is required.');
+    if (wordList.length < 10) {
+      setWordListError('At least 10 words are required.');
       isValid = false;
     } else {
       setWordListError(null);
