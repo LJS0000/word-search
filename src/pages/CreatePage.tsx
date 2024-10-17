@@ -16,12 +16,51 @@ interface AlertState {
 const CreatePage = () => {
   const navigate = useNavigate();
 
+  const [titleError, setTitleError] = useState<string | null>(null);
+  const [descError, setDescError] = useState<string | null>(null);
+  const [wordListError, setWordListError] = useState<string | null>(null);
+
   const [alert, setAlert] = useState<AlertState>({
     show: false,
     text: '',
     type: 'success',
     onClose: undefined,
   });
+
+  const validateForm = ({
+    title,
+    desc,
+    wordList,
+  }: {
+    title: string;
+    desc: string;
+    wordList: string[];
+  }) => {
+    let isValid = true;
+
+    if (!title.trim()) {
+      setTitleError('Title is required.');
+      isValid = false;
+    } else {
+      setTitleError(null);
+    }
+
+    if (!desc.trim()) {
+      setDescError('Description is required.');
+      isValid = false;
+    } else {
+      setDescError(null);
+    }
+
+    if (wordList.length === 0) {
+      setWordListError('At least one word is required.');
+      isValid = false;
+    } else {
+      setWordListError(null);
+    }
+
+    return isValid;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +71,10 @@ const CreatePage = () => {
     const wordList = words
       .map((word) => word.trim().toLowerCase())
       .filter((word) => word !== '');
+
+    if (!validateForm({ title, desc, wordList })) {
+      return;
+    }
 
     const newGameData = {
       title,
@@ -54,7 +97,7 @@ const CreatePage = () => {
       console.error('Error creating new game', err);
       setAlert({
         show: true,
-        text: 'Error creating new game',
+        text: 'Error occurred creating new game',
         type: 'error',
         onClose: undefined,
       });
@@ -87,7 +130,20 @@ const CreatePage = () => {
               ))}
             </div>
           </div>
+
           <Button type='submit'>Create</Button>
+
+          <>
+            {titleError && (
+              <p className={styles.errorMessage}>(!) {titleError}</p>
+            )}
+            {descError && (
+              <p className={styles.errorMessage}>(!) {descError}</p>
+            )}
+            {wordListError && (
+              <p className={styles.errorMessage}>(!) {wordListError}</p>
+            )}
+          </>
         </form>
       </div>
       {alert.show && (
