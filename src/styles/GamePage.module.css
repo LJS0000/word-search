@@ -1,0 +1,17 @@
+.loading {
+  @apply w-full h-full;
+  @apply flex items-center justify-center;
+}
+
+.gameContainer {
+  @apply w-full h-full;
+  @apply flex flex-col items-center;
+}
+
+.gameInfo {
+  @apply w-full p-8;
+}
+
+.gameInfo > h2 {
+  @apply text-3xl font-bold text-teal-800;
+}
