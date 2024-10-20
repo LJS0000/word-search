@@ -37,10 +37,13 @@ const CreatePage = () => {
     wordList: string[];
   }) => {
     let isValid = true;
+    const wordRegex = /^[A-Za-z]+$/;
 
     if (!title.trim()) {
       setTitleError('Title is required.');
       isValid = false;
+    } else if (title.length > 50) {
+      setTitleError('Title must be less than 50 characters.');
     } else {
       setTitleError(null);
     }
@@ -48,12 +51,17 @@ const CreatePage = () => {
     if (!desc.trim()) {
       setDescError('Description is required.');
       isValid = false;
+    } else if (desc.length > 500) {
+      setDescError('Description must be less than 500 characters.');
     } else {
       setDescError(null);
     }
 
     if (wordList.length < 10) {
       setWordListError('At least 10 words are required.');
+      isValid = false;
+    } else if (wordList.some((word) => !wordRegex.test(word))) {
+      setWordListError('Words must only contain alphabetical characters.');
       isValid = false;
     } else {
       setWordListError(null);
