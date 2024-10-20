@@ -1,0 +1,35 @@
+.createLink {
+  @apply text-lg text-teal-800 underline;
+  @apply cursor-pointer;
+  @apply hover:text-teal-300;
+}
+
+.gameListContainer {
+  @apply w-full h-full;
+  @apply p-8;
+}
+
+.titleWrapper {
+  @apply flex items-center;
+}
+
+.titleWrapper > h2 {
+  @apply text-2xl font-bold;
+  @apply mb-4;
+}
+
+.titleWrapper > div {
+  @apply flex-1;
+  @apply h-px;
+  @apply bg-gray-800;
+}
+
+.gameWrapper > p {
+  @apply text-xl text-teal-800;
+}
+
+.gameList > li {
+  @apply p-4 mb-4 border rounded;
+  @apply cursor-pointer;
+  @apply hover:bg-gray-100;
+}

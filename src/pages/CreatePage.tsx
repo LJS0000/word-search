@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addDocumentToCollection } from '../services/firestoreService';
+import { addDocumentToCollection } from '../services/databaseService';
 import styles from '../styles/CreatePage.module.css';
 import Input from '../components/shared/Input';
 import Button from '../components/shared/SubmitButton';
