@@ -1,6 +1,6 @@
 .board {
   @apply min-w-[70%] max-w-[90%] min-h-[50%] max-h-[70%] aspect-[8/9];
-  @apply border-4 border-teal-600;
+  @apply border-4 border-teal-600 rounded-lg;
   @apply flex flex-col border-collapse;
 }
 
@@ -13,4 +13,9 @@
   @apply -m-px border border-teal-600; /* 테두리 겹치도록 마진 제거 */
   @apply flex items-center justify-center;
   @apply text-3xl font-bold;
+  @apply cursor-pointer select-none;
+}
+
+.selected {
+  @apply text-white bg-teal-800;
 }
