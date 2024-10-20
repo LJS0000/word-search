@@ -47,7 +47,7 @@ const GamePage = () => {
           <li key={word}>{word}</li>
         ))}
       </ul> */}
-      <Board />
+      <Board words={gameData.wordList} />
     </div>
   )
 }

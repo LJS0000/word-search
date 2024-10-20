@@ -10,6 +10,7 @@
 
 .cell {
   @apply flex-1;
-  @apply border border-teal-600;
-  @apply -m-px; /* 테두리 겹치도록 마진 제거 */
+  @apply -m-px border border-teal-600; /* 테두리 겹치도록 마진 제거 */
+  @apply flex items-center justify-center;
+  @apply text-3xl font-bold;
 }
