@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addDocumentToCollection } from '../services/firestoreService';
+import { addDocumentToCollection } from '../services/databaseService';
 import styles from '../styles/CreatePage.module.css';
 import Input from '../components/shared/Input';
 import Button from '../components/shared/SubmitButton';
@@ -16,12 +16,60 @@ interface AlertState {
 const CreatePage = () => {
   const navigate = useNavigate();
 
+  const [titleError, setTitleError] = useState<string | null>(null);
+  const [descError, setDescError] = useState<string | null>(null);
+  const [wordListError, setWordListError] = useState<string | null>(null);
+
   const [alert, setAlert] = useState<AlertState>({
     show: false,
     text: '',
     type: 'success',
     onClose: undefined,
   });
+
+  const validateForm = ({
+    title,
+    desc,
+    wordList,
+  }: {
+    title: string;
+    desc: string;
+    wordList: string[];
+  }) => {
+    let isValid = true;
+    const wordRegex = /^[A-Za-z]+$/;
+
+    if (!title.trim()) {
+      setTitleError('Title is required.');
+      isValid = false;
+    } else if (title.length > 50) {
+      setTitleError('Title must be less than 50 characters.');
+    } else {
+      setTitleError(null);
+    }
+
+    if (!desc.trim()) {
+      setDescError('Description is required.');
+      isValid = false;
+    } else if (desc.length > 500) {
+      setDescError('Description must be less than 500 characters.');
+    } else {
+      setDescError(null);
+    }
+
+    if (wordList.length < 10) {
+      setWordListError('At least 10 words are required.');
+      isValid = false;
+    } else if (wordList.some((word) => !wordRegex.test(word))) {
+      setWordListError('Words must only contain alphabetical characters.');
+      isValid = false;
+    } else {
+      setWordListError(null);
+    }
+
+    console.log('Form is valid:', isValid);
+    return isValid;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +80,10 @@ const CreatePage = () => {
     const wordList = words
       .map((word) => word.trim().toLowerCase())
       .filter((word) => word !== '');
+
+    if (!validateForm({ title, desc, wordList })) {
+      return;
+    }
 
     const newGameData = {
       title,
@@ -54,9 +106,16 @@ const CreatePage = () => {
       console.error('Error creating new game', err);
       setAlert({
         show: true,
-        text: 'Error creating new game',
+        text: 'Error occurred creating new game',
         type: 'error',
-        onClose: undefined,
+        onClose: () => {
+          setAlert({
+            show: false,
+            text: '',
+            type: 'success',
+            onClose: undefined,
+          });
+        },
       });
     }
   };
@@ -87,7 +146,20 @@ const CreatePage = () => {
               ))}
             </div>
           </div>
+
           <Button type='submit'>Create</Button>
+
+          <>
+            {titleError && (
+              <p className={styles.errorMessage}>(!) {titleError}</p>
+            )}
+            {descError && (
+              <p className={styles.errorMessage}>(!) {descError}</p>
+            )}
+            {wordListError && (
+              <p className={styles.errorMessage}>(!) {wordListError}</p>
+            )}
+          </>
         </form>
       </div>
       {alert.show && (
