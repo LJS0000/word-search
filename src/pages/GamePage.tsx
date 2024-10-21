@@ -33,8 +33,6 @@ const GamePage = () => {
     return <div className={styles.loading}>No game found</div>
   }
 
-  console.log(gameData)
-
   return (
     <div className={styles.gameContainer}>
       <div className={styles.gameInfo}>
