@@ -1,7 +1,8 @@
 .board {
   @apply min-w-[70%] max-w-[90%] min-h-[50%] max-h-[70%] aspect-[8/9];
-  @apply border-4 border-teal-600 rounded-lg;
+  @apply border-4 border-teal-600;
   @apply flex flex-col border-collapse;
+  @apply cursor-default;
 }
 
 .row {
@@ -10,12 +11,13 @@
 
 .cell {
   @apply flex-1;
-  @apply -m-px border border-teal-600; /* 테두리 겹치도록 마진 제거 */
+  @apply -m-px border border-teal-600;
   @apply flex items-center justify-center;
-  @apply text-3xl font-bold;
-  @apply cursor-pointer select-none;
+  @apply text-2xl font-bold;
+  @apply select-none;
 }
 
-.selected {
-  @apply text-white bg-teal-800;
+.cell > span {
+  @apply cursor-pointer hover:text-teal-400;
+  @apply z-10;
 }
