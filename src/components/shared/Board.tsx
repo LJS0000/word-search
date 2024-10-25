@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
+import { useWordContext } from '../../context/wordContext'
 import { calculateBoardSize } from '../../utils/calculateBoardSize'
 import { generateBoard } from '../../utils/generateBoard'
 import styles from '../../styles/shared/Board.module.css'
 import Dragger from './Dragger'
 
 const Board = ({ words }: { words: string[] }) => {
+  const { setUserAnswer } = useWordContext()
+
   const [board, setBoard] = useState<string[][]>([])
   const [draggerSize, setDraggerSize] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -50,6 +53,8 @@ const Board = ({ words }: { words: string[] }) => {
         .map((cell) => board[cell.y][cell.x])
         .join('')
         .toLowerCase()
+
+      setUserAnswer(selectedWord)
 
       if (words.includes(selectedWord)) {
         console.log('Correct word found:', selectedWord)

@@ -25,5 +25,5 @@
 }
 
 .correct {
-  @apply line-through;
+  @apply text-gray-300 line-through;
 }

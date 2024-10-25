@@ -9,7 +9,7 @@ const GamePage = () => {
   const [loading, setLoading] = useState(true)
   const [gameData, setGameData] = useState<any | null>(null)
   const { id } = useParams<{ id: string }>()
-  const { setWords } = useWordContext()
+  const { setWords, userAnswer } = useWordContext()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,6 +43,16 @@ const GamePage = () => {
         <p>{gameData.desc}</p>
       </div>
       <Board words={gameData.wordList} />
+      <div className={styles.answerWrapper}>
+        <p>Your answer is</p>
+        {userAnswer.length > 0 ? (
+          <span className={styles.correctAnswer}>
+            {userAnswer.toUpperCase()}
+          </span>
+        ) : (
+          <span>...</span>
+        )}
+      </div>
     </div>
   )
 }
