@@ -1,0 +1,29 @@
+.helpText {
+  @apply flex items-center justify-center;
+  @apply text-teal-800;
+  @apply p-8;
+  @apply text-lg;
+}
+
+.wordListContainer {
+  @apply p-8;
+
+  > h3 {
+    @apply text-lg font-bold;
+    @apply mb-4;
+  }
+}
+
+.wordListWrapper {
+  @apply flex flex-col gap-1 p-4;
+  @apply border-r-4 border-teal-600;
+  @apply text-right;
+
+  li {
+    @apply text-2xl;
+  }
+}
+
+.correct {
+  @apply line-through;
+}
