@@ -17,7 +17,11 @@
   @apply select-none;
 }
 
-.cell > span {
+.letter {
   @apply cursor-pointer hover:text-teal-400;
   @apply z-10;
+}
+
+.selected {
+  @apply text-teal-400;
 }
