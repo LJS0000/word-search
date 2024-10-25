@@ -39,8 +39,24 @@ const Board = ({ words }: { words: string[] }) => {
   }
 
   const handleMouseUp = () => {
+    handleMatch()
     setIsDragging(false)
     setSelectedCells([])
+  }
+
+  const handleMatch = () => {
+    if (selectedCells.length > 0) {
+      const selectedWord = selectedCells
+        .map((cell) => board[cell.y][cell.x])
+        .join('')
+        .toLowerCase()
+
+      if (words.includes(selectedWord)) {
+        console.log('Correct word found:', selectedWord)
+      } else {
+        console.log('Incorrect word:', selectedWord)
+      }
+    }
   }
 
   useEffect(() => {
@@ -62,13 +78,15 @@ const Board = ({ words }: { words: string[] }) => {
                 key={j}
                 className={styles.cell}
                 onMouseDown={() => setIsDragging(true)}
-                onMouseOver={() => selectCell(j, i)}
                 onMouseUp={handleMouseUp}
               >
                 <span
                   className={`${styles.letter} ${
                     isSelected ? styles.selected : ''
                   }`}
+                  onMouseDown={() => setIsDragging(true)}
+                  onMouseOver={() => selectCell(j, i)}
+                  onMouseUp={handleMouseUp}
                 >
                   {cell}
                 </span>

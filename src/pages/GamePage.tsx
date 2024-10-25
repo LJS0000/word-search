@@ -6,8 +6,8 @@ import styles from '../styles/GamePage.module.css'
 import Board from '../components/shared/Board'
 
 const GamePage = () => {
-  const [gameData, setGameData] = useState<any | null>(null)
   const [loading, setLoading] = useState(true)
+  const [gameData, setGameData] = useState<any | null>(null)
   const { id } = useParams<{ id: string }>()
   const { setWords } = useWordContext()
 
