@@ -1,0 +1,5 @@
+.dragger {
+  @apply fixed -z-10;
+  @apply bg-teal-300 opacity-55;
+  @apply rounded-full;
+}
