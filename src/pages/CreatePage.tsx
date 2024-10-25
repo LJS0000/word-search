@@ -1,88 +1,94 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { addDocumentToCollection } from '../services/databaseService';
-import styles from '../styles/CreatePage.module.css';
-import Input from '../components/shared/Input';
-import Button from '../components/shared/SubmitButton';
-import Alert from '../components/shared/Alert';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { addDocumentToCollection } from '../services/databaseService'
+import styles from '../styles/CreatePage.module.css'
+import Input from '../components/shared/Input'
+import Button from '../components/shared/SubmitButton'
+import Alert from '../components/shared/Alert'
 
 interface AlertState {
-  show: boolean;
-  text: string;
-  type: 'success' | 'error';
-  onClose?: () => void;
+  show: boolean
+  text: string
+  type: 'success' | 'error'
+  onClose?: () => void
 }
 
 const CreatePage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [titleError, setTitleError] = useState<string | null>(null);
-  const [descError, setDescError] = useState<string | null>(null);
-  const [wordListError, setWordListError] = useState<string | null>(null);
+  const [titleError, setTitleError] = useState<string | null>(null)
+  const [descError, setDescError] = useState<string | null>(null)
+  const [wordListError, setWordListError] = useState<string | null>(null)
 
   const [alert, setAlert] = useState<AlertState>({
     show: false,
     text: '',
     type: 'success',
     onClose: undefined,
-  });
+  })
 
   const validateForm = ({
     title,
     desc,
     wordList,
   }: {
-    title: string;
-    desc: string;
-    wordList: string[];
+    title: string
+    desc: string
+    wordList: string[]
   }) => {
-    let isValid = true;
-    const wordRegex = /^[A-Za-z]+$/;
+    let isValid = true
+    const wordRegex = /^[A-Za-z]+$/
 
     if (!title.trim()) {
-      setTitleError('Title is required.');
-      isValid = false;
+      setTitleError('Title is required.')
+      isValid = false
     } else if (title.length > 50) {
-      setTitleError('Title must be less than 50 characters.');
+      setTitleError('Title must be less than 50 characters.')
     } else {
-      setTitleError(null);
+      setTitleError(null)
     }
 
     if (!desc.trim()) {
-      setDescError('Description is required.');
-      isValid = false;
+      setDescError('Description is required.')
+      isValid = false
     } else if (desc.length > 500) {
-      setDescError('Description must be less than 500 characters.');
+      setDescError('Description must be less than 500 characters.')
     } else {
-      setDescError(null);
+      setDescError(null)
     }
 
     if (wordList.length < 10) {
-      setWordListError('At least 10 words are required.');
-      isValid = false;
+      setWordListError('At least 10 words are required.')
+      isValid = false
     } else if (wordList.some((word) => !wordRegex.test(word))) {
-      setWordListError('Words must only contain alphabetical characters.');
-      isValid = false;
+      setWordListError('Words must only contain alphabetical characters.')
+      isValid = false
+    } else if (wordList.some((word) => word.length < 3)) {
+      setWordListError('Words must be at least 3 characters long.')
+      isValid = false
+    } else if (new Set(wordList).size !== wordList.length) {
+      setWordListError('Words must be unique.')
+      isValid = false
     } else {
-      setWordListError(null);
+      setWordListError(null)
     }
 
-    console.log('Form is valid:', isValid);
-    return isValid;
-  };
+    console.log('Form is valid:', isValid)
+    return isValid
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const title = formData.get('title') as string;
-    const desc = formData.get('desc') as string;
-    const words = formData.getAll('word') as string[];
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const title = formData.get('title') as string
+    const desc = formData.get('desc') as string
+    const words = formData.getAll('word') as string[]
     const wordList = words
       .map((word) => word.trim().toLowerCase())
-      .filter((word) => word !== '');
+      .filter((word) => word !== '')
 
     if (!validateForm({ title, desc, wordList })) {
-      return;
+      return
     }
 
     const newGameData = {
@@ -90,20 +96,20 @@ const CreatePage = () => {
       desc,
       wordList,
       createdAt: new Date().toISOString(),
-    };
+    }
 
     try {
-      await addDocumentToCollection('games', newGameData);
+      await addDocumentToCollection('games', newGameData)
       setAlert({
         show: true,
         text: 'Successfully created new game',
         type: 'success',
         onClose: () => {
-          navigate('/');
+          navigate('/')
         },
-      });
+      })
     } catch (err) {
-      console.error('Error creating new game', err);
+      console.error('Error creating new game', err)
       setAlert({
         show: true,
         text: 'Error occurred creating new game',
@@ -114,11 +120,11 @@ const CreatePage = () => {
             text: '',
             type: 'success',
             onClose: undefined,
-          });
+          })
         },
-      });
+      })
     }
-  };
+  }
 
   return (
     <>
@@ -166,6 +172,6 @@ const CreatePage = () => {
         <Alert text={alert.text} type={alert.type} onClose={alert.onClose} />
       )}
     </>
-  );
-};
-export default CreatePage;
+  )
+}
+export default CreatePage
