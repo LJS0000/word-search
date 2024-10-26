@@ -1,0 +1,27 @@
+.loading {
+  @apply w-full h-full;
+  @apply flex items-center justify-center;
+}
+
+.gameContainer {
+  @apply w-full h-full;
+  @apply flex flex-col items-center;
+}
+
+.gameInfo {
+  @apply w-full p-8;
+}
+
+.gameInfo > h2 {
+  @apply text-3xl font-bold text-teal-800;
+}
+
+.answerWrapper {
+  @apply w-full py-4;
+  @apply flex items-center justify-center gap-2;
+  @apply text-2xl font-bold;
+}
+
+.correctAnswer {
+  @apply text-teal-500;
+}

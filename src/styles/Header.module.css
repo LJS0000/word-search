@@ -1,0 +1,22 @@
+.header {
+  @apply px-8 py-8;
+  @apply text-white bg-teal-800;
+  @apply flex justify-between md:justify-end;
+  @apply relative;
+}
+
+.title {
+  @apply text-2xl font-bold leading-none;
+  @apply md:-translate-x-1/2 md:absolute md:left-1/2;
+  @apply cursor-pointer;
+}
+
+.addBtnContainer {
+  @apply flex items-center gap-1;
+  @apply cursor-pointer;
+  @apply hover:text-teal-300;
+}
+
+.addBtn {
+  @apply text-xl;
+}
