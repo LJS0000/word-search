@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import { useWordContext } from '../../context/wordContext'
 import { calculateBoardSize } from '../../utils/calculateBoardSize'
 import { generateBoard } from '../../utils/generateBoard'
@@ -105,4 +105,4 @@ const Board = ({ words }: { words: string[] }) => {
   )
 }
 
-export default Board
+export default memo(Board)
