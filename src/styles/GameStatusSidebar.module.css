@@ -1,7 +1,7 @@
 .helpText {
   @apply flex items-center justify-center;
   @apply text-teal-800;
-  @apply p-8;
+  @apply p-6;
   @apply text-lg;
 }
 
